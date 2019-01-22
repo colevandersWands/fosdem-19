@@ -12,8 +12,10 @@ a beginner language should ... (- Guzdial)
 2. Keep cognitive load low
 3. Be honest
 4. Be generative and productive
-5. Test, don’t trust
-For Guzdial, it fails on points 1, 2, 4 & 5. his observed shortcomings can be overcome with clever ID, leaving a programming language (and great learning environment!) very well-suited to beginner programmings. (preface - these points all address teaching students of ~17+, or younger but dedicated students)
+5. Test, don’t trust  
+
+For Guzdial, JS fails on points 1, 2, 4 & 5.  
+his observed shortcomings can be overcome with clever ID, leaving a programming language (and great learning environment!) very well-suited to beginner programmings. (preface - these points all address teaching students of ~17+, or younger but dedicated students)
 1. While JS's textual format & syntactic features may not be the most beginner friendly, this can be overcome with a solid series of exercises build around click-and-drag, copy-paste, and fill-in-the-blank exercises. This initial hurdle pays off when students can immediately begin programming simple websites, connecting to something fun and practical for sharing projects with a live hosting on gh-pages
 2. JS is filled with unnecessary complexity (especially at the beginning in it's primitives and operators).  This can be circumvented by encouraging a subset of JS & providing solid exercises that do not require students to veer out of this subset.  Once students are comfortable working with basic JS scripts, these 'complex' features can be used to study & understand true cs concepts like composition, sets/functions, ... as in 'computation'.  In fact, the flexibility of JS can be used over-and-over again to create self-reporting exercises in ways that are not possible in other languages (exansions, recursion, manipulating boolean equations, ...). One of the clearest examples of this is how JS can be refactored to explain itself with 'expanding'
 3. concur
