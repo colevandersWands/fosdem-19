@@ -4,6 +4,7 @@ general structure
 * per difficulty
     * what's being done about this, how well it's working 
     * how JS can be used to address these things
+* how JS can move beyond the other methods  
 * and these things can go for not-novices, bring them to nls
 
 
