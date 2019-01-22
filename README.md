@@ -1,42 +1,11 @@
 general structure
-  what's a novice 
-  what are the difficulties in learning/teaching them
-    per difficulty
-    - what's being done about this, how well it's working 
-    - how JS can be used to address these things
-  and these things can go for not-novices, bring them to nls
+* what's a novice 
+* what are the difficulties in learning/teaching them
+* per difficulty
+    * what's being done about this, how well it's working 
+    * how JS can be used to address these things
+* and these things can go for not-novices, bring them to nls
 
-main points
-  what is a novice programmer
-  there are recurring issues in teaching novice programmers
-    brittle understanding
-    syntactic-level problem solving strategies
-    failing to locate the source of bugs
-  there are crucial implicit skills that are often overlooked
-    you don't build professional skills by doing professional tasks
-  here are some things often being done about that
-    custom learning environments
-    friendly reactive feedback
-    ai-ly things
-  here are problems with those things
-    accessibility
-    teacher involvement in exercise creation
-    skill transfer outside learning environment
-    outcome-focused assignments
-  here's what can be done to fix this and how js & open js tools can help
-    learning to write code that provides it's own feedback
-    code is content - devtool embedded lessons
-      lends itself to worked examples
-    visual flexibility of JS & power of native devtools to
-      write self-logging code
-      exercises & projects who's code doubles as a visual text
-    expanding code gives
-      confidence manipulating and 'looking inside'
-      mentally breaking programs into tiny steps
-        case-by-case and, on a larger scale, approachablizing black boxes
-      paired with logging or asserting
-        confidence in identifying the point of bugsource
-  and many of these skills can help non-novices too
 
 a beginner language should ... (- Guzdial)
 1. Connect to what learners know
