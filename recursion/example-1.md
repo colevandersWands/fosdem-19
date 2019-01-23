@@ -65,7 +65,7 @@ learning to work with formal definitions, and to trust recursive calls with 'fai
 
 n === 3
 ```js
-{ console.log('      r(3) === 4 ');
+{ // console.log('      r(3) === 4 ');
   const expected = 4;
   const vis = {};
   vis._0=()=>              r(3)                ;
@@ -80,7 +80,7 @@ n === 3
 
 n === 5
 ```js 
-{ console.log('      r(5) === 16 ');
+{ // console.log('      r(5) === 16 ');
   const expected = 16;
   const vis = {};
   vis._0=()=>              r(5)                ;
@@ -95,7 +95,7 @@ n === 5
 
 n === 8
 ```js
-{ console.log('      r(8) === 128 ');
+{ // console.log('      r(8) === 128 ');
   const expected = 128;
   const vis = {};
   vis._0=()=>                               r(8)                                  ;
@@ -118,7 +118,7 @@ n === 8
 
 
 ```js
-{ console.log('expanded function')
+{ // console.log('expanded function')
   function spandy(n) {
     const is_base = n === 1;
     if (is_base) {
@@ -145,7 +145,7 @@ n === 8
 
 
 ```js
-{ console.log('logged function');
+{ // console.log('logged function');
   function logged(n) {                  const log = {'0. n':n};
     const is_base = n === 1;            log['1. base'] = is_base;
     if (is_base) {
@@ -239,7 +239,9 @@ function render_vis(_vis, _expected) {
 
 #### Log Reports
 
-takes a logging function and test cases. It passes each test case through the function and prints out one log for each test case at the end.  it doesn't care if a case passes or fails, it's job is to log reports.  and anyway, you shouldn't have changed any functionally significant lines of code from 'expanded' to 'logged' so there should be no failing tests.
+takes a logging function and test cases. It passes each test case through the function and prints out one log for each test case at the end.  
+* if a test passes, it prints the log as is
+* if a test fails, it replaces 'result' with 'actual' and 'expected'
 
 used in 'logged function'
 
