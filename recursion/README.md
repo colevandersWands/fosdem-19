@@ -9,22 +9,23 @@
 
 ## How to do this
 
-* study the examples to see what it's all about.
+1. fork this repo.  you'll study our starter material and keep your own notes on your fork
+2. study the examples to see what it's all about.
     * [example 1](./example-1.md)
     * [example 1](./example-1.md)
-* copy all the helper functions to the console and hit enter so they're around for later
+3. copy all the helper functions to the console and hit enter so they're around for later
     * [helper functions](#helper-functions)
-* complete the provided starters markdowns
+4. complete the provided starters markdowns
     * [starter 1](#starter-1)
     * [starter 2](#starter-2)
-* for more practice
-    * copy-paste [template.md](./template.md) into a new file from github
+5. for more practice
+    * copy-paste the [template.md](https://raw.githubusercontent.com/janke-learning/fosdem-2019/master/recursion/template.md) into a new file on your fork github
     * choose an exercise, paste it into the top of your empty template
     * fill out the template
-* for endless practice
+6. for endless practice
     * come up with random recursive definitions and study them
     * how does the same function behave with different input sets?
-    * ...
+    * 
 
 [TOP](#recursion)
 
@@ -32,7 +33,7 @@
 
 ## recursive starters
 
-
+(each of these have a domain set. no need for type-checking, just write your test cases from within the domain)
 
 ```
 for a > 0, b < 0

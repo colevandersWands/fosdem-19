@@ -6,6 +6,15 @@ Given:
 r(n) === n                :: if (n === 1)
 r(n) === r(n-1) + r(n-1)  :: if (n > 1)
 ```
+
+### index
+* [functionified](#functionified)
+* [test cases](#test-cases)
+* [formal replacement](#formal-replacement)
+* [expanded function](#expanded-function)
+* [logged function](#logged-function)
+* [(helper functions)](#helper-functions)
+
 ---
 
 ## Functionified
@@ -20,9 +29,16 @@ function r(n) {
 };
 ```
 
+
+[TOP](#a-recursion)
+
 ---
 
 ## Test Cases
+
+build these by a combination of hand-solving, guessing, and trial/error.
+validate them by running them through your recursive function. in later steps, the test cases will be right.  For now the function always is.
+
 
 ```js
 const test_cases = [
@@ -35,56 +51,72 @@ const test_cases = [
     {name: '7', args: [7], expected: 64},
     {name: '8', args: [8], expected: 128},
   ];
+run_tests(r, test_cases);
 ```
+
+[TOP](#a-recursion)
 
 ---
 
+
 ## Formal Replacement
 
-template:
+learning to work with formal definitions, and to trust recursive calls with 'faith cases'
+
+
 ```js
-{ console.log('%c\t   r(x) === y ', 'font-weight:bold');
-  const expected = null;
+{ console.log('%c\t   r(3) === 4 ', 'font-weight:bold');
+  const expected = 4;
   const vis = {};
-  vis._0=()=>  null ;     
-  vis._1=()=>  null ;
-  vis._2=()=>  null ;
-  vis._3=()=>  null ;
-  vis._4=()=>  null ;
-  vis._5=()=>  null ;
+  vis._0=()=>              r(3)                ;
+  vis._1=()=>      r(2)      +     r(2)        ;
+  vis._2=()=>  (r(1) + r(1)) + (r(1) + r(1))   ;
+  vis._3=()=>    (1  +   1)  +   (1  +   1)    ;
+  vis._4=()=>        2       +       2         ;
+  vis._5=()=>                4                 ;
   render_vis(vis, expected);
 }
 ```
- 
-  { console.log('%c\t   r(5) === 16 ', 'font-weight:bold');
-    const expected = 16;
-    const vis = {};
-    vis._0=()=>              r(5)                ;
-    vis._1=()=>      r(4)      +     r(4)        ;
-    vis._2=()=>  (r(3) + r(3)) + (r(3) + r(3))   ;
-    vis._3=()=>    (4  +   4)  +   (4  +   4)    ;
-    vis._4=()=>        8       +       8         ;
-    vis._5=()=>               16                 ;
-    render_vis(vis, expected);
-  };
 
-  { console.log('%c\t   r(8) === 128 ', 'font-weight:bold');
-    const expected = 128;
-    const vis = {};
-    vis._0=()=>                               r(8)                                  ;
-    vis._1=()=>              r(7)               +              r(7)                 ;
-    vis._2=()=>     (r(6)      +     r(6))      +     (r(6)      +     r(6))        ;
-    vis._3=()=> ((r(5) + r(5)) + (r(5) + r(5))) + ((r(5) + r(5)) + (r(5) + r(5)))   ;
-    vis._4=()=>  ((16  +  16)  +  (16  +  16))  +  ((16  +  16)  +  (16  +  16))    ;
-    vis._5=()=>       (36      +       32)      +       (32      +       32)        ;
-    vis._6=()=>                64               +                64                 ;
-    vis._7=()=>                                128                                  ;
-    render_vis(vis, expected);
-  }
+```js 
+{ console.log('%c\t   r(5) === 16 ', 'font-weight:bold');
+  const expected = 16;
+  const vis = {};
+  vis._0=()=>              r(5)                ;
+  vis._1=()=>      r(4)      +     r(4)        ;
+  vis._2=()=>  (r(3) + r(3)) + (r(3) + r(3))   ;
+  vis._3=()=>    (4  +   4)  +   (4  +   4)    ;
+  vis._4=()=>        8       +       8         ;
+  vis._5=()=>               16                 ;
+  render_vis(vis, expected);
+};
+```
 
-console.groupEnd();
-console.groupCollapsed('%c--- expanded ---', 'font-style:italic');
+```js
+{ console.log('%c\t   r(8) === 128 ', 'font-weight:bold');
+  const expected = 128;
+  const vis = {};
+  vis._0=()=>                               r(8)                                  ;
+  vis._1=()=>              r(7)               +              r(7)                 ;
+  vis._2=()=>     (r(6)      +     r(6))      +     (r(6)      +     r(6))        ;
+  vis._3=()=> ((r(5) + r(5)) + (r(5) + r(5))) + ((r(5) + r(5)) + (r(5) + r(5)))   ;
+  vis._4=()=>  ((16  +  16)  +  (16  +  16))  +  ((16  +  16)  +  (16  +  16))    ;
+  vis._5=()=>       (36      +       32)      +       (32      +       32)        ;
+  vis._6=()=>                64               +                64                 ;
+  vis._7=()=>                                128                                  ;
+  render_vis(vis, expected);
+};
+```
 
+[TOP](#a-recursion)
+
+---
+
+## Expanded Function
+
+
+```js
+{ console.log('expanded function')
   function spandy(n) {
     const is_base = n === 1;
     if (is_base) {
@@ -98,12 +130,20 @@ console.groupCollapsed('%c--- expanded ---', 'font-style:italic');
       return built;
     };
   };
-  console.log(spandy.toString())
-  run_tests(spandy, test_cases)
+  console.log(spandy.toString());
+  run_tests(spandy, test_cases);
+};
+```
 
-console.groupEnd();
-console.groupCollapsed('%c--- logged ---', 'font-style:italic');
+[TOP](#a-recursion)
 
+---
+
+## Logged Function
+
+
+```js
+{ console.log('logged function');
   function logged(n) {                  const log = {'0. n':n};
     const is_base = n === 1;            log['1. base'] = is_base;
     if (is_base) {
@@ -120,16 +160,31 @@ console.groupCollapsed('%c--- logged ---', 'font-style:italic');
     };
   };
   log_reports(logged, test_cases)
-
-console.groupEnd();
-
-
+};
+```
 
 
+[TOP](#a-recursion)
+
+---
+---
+
+## Helper functions
+
+* [run tests](#run-tests)
+* [render vis](#render-vis)
+* [log reports](#log-reports)
 
 
-// testing utils
+#### Run Tests
 
+takes a function and array of test cases.  
+* if a case passes, nothing happens  
+* if it fails, the actual & expected values are logged
+
+this helper is used to build the test cases against the recursive function and to test the expanded solution.
+
+```js
 function run_tests(_target, _cases) {
   for (let t_case of _cases) {
     const expected = t_case.expected;
@@ -152,7 +207,17 @@ function run_tests(_target, _cases) {
     };
   };
 };
+```
 
+#### Render Vis
+
+takes in an object of functions with no args and an expected value.  it compares each function's return value to the expected value and prints the body of the function to the console. 
+* if a function fails, it prints the function in orange with actual & expected values logged below
+* if it passes, it prints the function in green
+
+it is used in the manual step-throughs
+
+```js
 function render_vis(_vis, _expected) {
   const keys = Object.keys(_vis);
   for (let i = 0; i < keys.length; i++) {
@@ -168,7 +233,15 @@ function render_vis(_vis, _expected) {
     };
   };
 };
+```
 
+#### Log Reports
+
+takes a logging function and test cases. It passes each test case through the function and prints out one log for each test case at the end.  it doesn't care if a case passes or fails, it's job is to log reports.  and anyway, you shouldn't have changed any functionally significant lines of code from 'expanded' to 'logged' so there should be no failing tests.
+
+used in 'logged function'
+
+```js
 function log_reports(_target, _cases) {
   const report = {}
   for (let t_case of _cases) {
@@ -185,4 +258,9 @@ function log_reports(_target, _cases) {
   };
   console.log(report)
 };
-}
+```
+
+___
+___
+### <a href="http://janke-learning.org" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Janke Learning</a>
+s
