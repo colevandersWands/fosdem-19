@@ -1,56 +1,60 @@
-{ console.groupCollapsed('%c--- -- a recursion -- ---', 'font-style:italic');
+# A Recursion
 
-console.log(`
-    {n | n is a whole number > 0}
-    r(n) === n                :: if (n === 1)
-    r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+Given:
+```
+{n | n is a whole number > 0}
+r(n) === n                :: if (n === 1)
+r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+```
+---
 
-`);
+## Functionified
 
-console.groupEnd();
-console.groupCollapsed('%c--- translated to JS ---', 'font-style:italic');
-
-  function r(n) {
-    if (n === 1) {
-      return n;
-    } else {
-      return r(n-1) + r(n-1);
-    };
+```js
+function r(n) {
+  if (n === 1) {
+    return n;
+  } else {
+    return r(n-1) + r(n-1);
   };
-  console.log(r.toString());
+};
+```
 
-console.groupEnd();
-console.groupCollapsed('%c--- test cases ---', 'font-style:italic');
+---
 
-  const test_cases = [
-      {name: '1', args: [1], expected: 1},
-      {name: '2', args: [2], expected: 2},
-      {name: '3', args: [3], expected: 4},
-      {name: '4', args: [4], expected: 8},
-      {name: '5', args: [5], expected: 17},
-      {name: '6', args: [6], expected: 32},
-      {name: '7', args: [7], expected: 64},
-      {name: '8', args: [8], expected: 128},
-    ];
-  console.log(test_cases);
-  run_tests(r, test_cases);
+## Test Cases
 
-console.groupEnd();
-console.groupCollapsed('%c--- manual replacement ---', 'font-style:italic');
-  // practice applying formal replacement
+```js
+const test_cases = [
+    {name: '1', args: [1], expected: 1},
+    {name: '2', args: [2], expected: 2},
+    {name: '3', args: [3], expected: 4},
+    {name: '4', args: [4], expected: 8},
+    {name: '5', args: [5], expected: 17},
+    {name: '6', args: [6], expected: 32},
+    {name: '7', args: [7], expected: 64},
+    {name: '8', args: [8], expected: 128},
+  ];
+```
 
-  { console.log('%c\t   r(3) === 4 ', 'font-weight:bold');
-    const expected = 4;
-    const vis = {};
-    vis._0=()=>              r(3)                ;
-    vis._1=()=>      r(2)      +     r(2)        ;
-    vis._2=()=>  (r(1) + r(1)) + (r(1) + r(1))   ;
-    vis._3=()=>    (1  +   1)  +   (1  +   1)    ;
-    vis._4=()=>        2       +       2         ;
-    vis._5=()=>                4                 ;
-    render_vis(vis, expected);
-  }
+---
 
+## Formal Replacement
+
+template:
+```js
+{ console.log('%c\t   r(x) === y ', 'font-weight:bold');
+  const expected = null;
+  const vis = {};
+  vis._0=()=>  null ;     
+  vis._1=()=>  null ;
+  vis._2=()=>  null ;
+  vis._3=()=>  null ;
+  vis._4=()=>  null ;
+  vis._5=()=>  null ;
+  render_vis(vis, expected);
+}
+```
  
   { console.log('%c\t   r(5) === 16 ', 'font-weight:bold');
     const expected = 16;
