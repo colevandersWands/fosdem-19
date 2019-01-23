@@ -21,7 +21,7 @@ r(a,b) === r(a-1, b+1)  :: !(b > a)
 ## Functionified
 
 ```js
-function r(n) {
+function r(a, b) {
   if (b > a) {
     return a + b;
   } else {
@@ -40,19 +40,23 @@ function r(n) {
 build these by a combination of hand-solving, guessing, and trial/error.
 validate them by running them through your recursive function. in later steps, the test cases will be right.  For now the function always is.
 
+(for reference)
+```
+for all: b < 0, 0 < a, a and b are numbers
+r(a,b) === a + b        :: b > a
+r(a,b) === r(a-1, b+1)  :: !(b > a)
+```
 
 ```js
-const test_cases = [
-    {name: '1', args: [1], expected: 1},
-    {name: '2', args: [2], expected: 2},
-    {name: '3', args: [3], expected: 4},
-    {name: '4', args: [4], expected: 8},
-    {name: '5', args: [5], expected: 17},
-    {name: '6', args: [6], expected: 32},
-    {name: '7', args: [7], expected: 64},
-    {name: '8', args: [8], expected: 128},
-  ];
-run_tests(r, test_cases);
+let test_cases = []; // declare test case array
+
+// push new test cases into it
+test_cases.push({name: '-2, 2', args: [-2, 2], expected: 1})
+test_cases.push({name: '-2, 5', args: [-2, 5], expected: 2})
+test_cases.push({name: '-.5, .5', args: [-.5, .5], expected: 4})
+test_cases.push({name: '-100, 100', args: [-100, 100], expected: 8})
+
+run_tests(r, test_cases);  // test your test cases
 ```
 
 [TOP](#a-recursion)
