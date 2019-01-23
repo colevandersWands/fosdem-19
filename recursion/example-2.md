@@ -2,9 +2,9 @@
 
 Given:
 ```
-for all: b < 0, 0 < a, a and b are numbers
-r(a,b) === a + b        :: b > a
-r(a,b) === r(a-1, b+1)  :: !(b > a)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
 ### index
@@ -22,10 +22,10 @@ r(a,b) === r(a-1, b+1)  :: !(b > a)
 
 ```js
 function r(a, b) {
-  if (b > a) {
+  if (a > b) {
     return a + b;
   } else {
-    return r(a-1, b+1)
+    return r(a+1, b-1)
   };
 };
 ```
@@ -40,23 +40,26 @@ function r(a, b) {
 build these by a combination of hand-solving, guessing, and trial/error.
 validate them by running them through your recursive function. in later steps, the test cases will be right.  For now the function always is.
 
-(for reference)
+Given:
 ```
-for all: b < 0, 0 < a, a and b are numbers
-r(a,b) === a + b        :: b > a
-r(a,b) === r(a-1, b+1)  :: !(b > a)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
 ```js
-let test_cases = []; // declare test case array
-
-// push new test cases into it
-test_cases.push({name: '-2, 2', args: [-2, 2], expected: 1})
-test_cases.push({name: '-2, 5', args: [-2, 5], expected: 2})
-test_cases.push({name: '-.5, .5', args: [-.5, .5], expected: 4})
-test_cases.push({name: '-100, 100', args: [-100, 100], expected: 8})
-
-run_tests(r, test_cases);  // test your test cases
+test_cases = [
+    {name: '-2, 2', args: [-2, 2], expected: 0},
+    {name: '-2, 5', args: [-2, 5], expected: 3},
+    {name: '-5, 2', args: [-5, 2], expected: -3},
+    {name: '-.5, .5', args: [-.5, .5], expected: 0},
+    {name: '-100, 100', args: [-100, 100], expected: 0},
+    {name: '-1, 100', args: [-1, 100], expected: 99},
+    {name: '-100, 1', args: [-100, 1], expected: -99},
+    {name: '-.005, .5', args: [-.005, .5], expected: .495},
+    {name: '-.5, .005', args: [-.5, .005], expected: -.495},
+  ];
+run_tests(r, test_cases); 
 ```
 
 [TOP](#a-recursion)
@@ -68,58 +71,58 @@ run_tests(r, test_cases);  // test your test cases
 
 learning to work with formal definitions, and to trust recursive calls with 'faith cases'
 
-(for reference)
+Given:
 ```
-{n | n is a whole number > 0}
-r(n) === n                :: if (n === 1)
-r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
 n === 3
 ```js
-{ // console.log('      r(3) === 4 ');
-  const expected = 4;
+{ // console.log('      r(-2, 2) === 0 ');
+  const expected = 0;
   const vis = {};
-  vis._0=()=>              r(3)                ;
-  vis._1=()=>      r(2)      +     r(2)        ;
-  vis._2=()=>  (r(1) + r(1)) + (r(1) + r(1))   ;
-  vis._3=()=>    (2  +   2)  +   (2  +   2)    ;
-  vis._4=()=>        4       +       4         ;
-  vis._5=()=>                8                 ;
+  vis._0=()=>          r(-2, 2) 
+  vis._1=()=>          r(-1, 1)
+  vis._2=()=>          r(0, 0)
+  vis._3=()=>          r(1, -1)
+  vis._4=()=>           -1 + 1
+  vis._5=()=>              0                 
   render_vis(vis, expected);
 }
 ```
 
 n === 5
 ```js 
-{ // console.log('      r(5) === 16 ');
-  const expected = 16;
+{ // console.log('      r(-2, 5) === 3 ');
+  const expected = 3;
   const vis = {};
-  vis._0=()=>              r(5)                ;
-  vis._1=()=>      r(6)      +     r(6)        ;
-  vis._2=()=>  (r(3) + r(3)) + (r(3) + r(3))   ;
-  vis._3=()=>    (4  +   4)  +   (4  +   4)    ;
-  vis._4=()=>        8       +       8         ;
-  vis._5=()=>               16                 ;
+  vis._0=()=>          r(-2, 5) 
+  vis._1=()=>          r(-1, 4)
+  vis._2=()=>          r(0, 3)
+  vis._3=()=>          r(1, 2)
+  vis._4=()=>          r(2, 1)
+  vis._5=()=>           2 + 1       
+  vis._6=()=>             3                           
   render_vis(vis, expected);
-};
+}
 ```
 
 n === 8
 ```js
-{ // console.log('      r(8) === 128 ');
-  const expected = 128;
+{ // console.log('      r(-5, 2) === -3 ');
+  const expected = -3;
   const vis = {};
-  vis._0=()=>                               r(8)                                  ;
-  vis._1=()=>              r(7)               +              r(7)                 ;
-  vis._2=()=>     (r(6)      +     r(6))      +     (r(6)      +     r(6))        ;
-  vis._3=()=> ((r(5) + r(5)) + (r(5) + r(5))) + ((r(5) + r(5)) + (r(5) + r(5)))   ;
-  vis._4=()=>  ((16  +  16)  +  (16  +  16))  +  ((16  +  16)  +  (16  +  16))    ;
-  vis._5=()=>       (36      +       32)      +       (32      +       32)        ;
-  vis._6=()=>                64               +                64                 ;
-  vis._7=()=>                                128                                  ;
+  vis._0=()=>          r(-5, 2) 
+  vis._1=()=>          r(-4, 1)
+  vis._2=()=>          r(-3, 0)
+  vis._3=()=>          r(-2, -1)
+  vis._4=()=>          r(-1, -2)
+  vis._5=()=>           -1 + -2       
+  vis._6=()=>             -3                           
   render_vis(vis, expected);
-};
+}
 ```
 
 [TOP](#a-recursion)
