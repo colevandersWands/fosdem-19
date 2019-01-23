@@ -63,9 +63,9 @@ run_tests(r, test_cases);
 
 learning to work with formal definitions, and to trust recursive calls with 'faith cases'
 
-
+n === 3
 ```js
-{ console.log('%c\t   r(3) === 4 ', 'font-weight:bold');
+{ console.log('      r(3) === 4 ');
   const expected = 4;
   const vis = {};
   vis._0=()=>              r(3)                ;
@@ -78,8 +78,9 @@ learning to work with formal definitions, and to trust recursive calls with 'fai
 }
 ```
 
+n === 5
 ```js 
-{ console.log('%c\t   r(5) === 16 ', 'font-weight:bold');
+{ console.log('      r(5) === 16 ');
   const expected = 16;
   const vis = {};
   vis._0=()=>              r(5)                ;
@@ -92,8 +93,9 @@ learning to work with formal definitions, and to trust recursive calls with 'fai
 };
 ```
 
+n === 8
 ```js
-{ console.log('%c\t   r(8) === 128 ', 'font-weight:bold');
+{ console.log('      r(8) === 128 ');
   const expected = 128;
   const vis = {};
   vis._0=()=>                               r(8)                                  ;
