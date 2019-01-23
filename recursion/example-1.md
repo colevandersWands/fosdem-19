@@ -12,6 +12,7 @@ r(n) === r(n-1) + r(n-1)  :: if (n > 1)
 * [test cases](#test-cases)
 * [formal replacement](#formal-replacement)
 * [expanded function](#expanded-function)
+* [trusting recursion](#trusting-recursion)
 * [logged function](#logged-function)
 * [(helper functions)](#helper-functions)
 
@@ -62,6 +63,13 @@ run_tests(r, test_cases);
 ## Formal Replacement
 
 learning to work with formal definitions, and to trust recursive calls with 'faith cases'
+
+(for reference)
+```
+{n | n is a whole number > 0}
+r(n) === n                :: if (n === 1)
+r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+```
 
 n === 3
 ```js
@@ -141,6 +149,98 @@ n === 8
 
 ---
 
+## Trusting Recursion
+
+(for reference)
+```
+{n | n is a whole number > 0}
+r(n) === n                :: if (n === 1)
+r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+```
+
+n === 1
+```js
+{ // console.log('trusting 1')
+  let result;
+  const is_base = true;           // n === 1
+  if (is_base) {
+    const turnt = 1;              // n
+    result = 1;                   // turnt
+  } else {
+    const broke = 0;              // n - 1
+    const rec_l = r(0);           // r(n-1)  
+    const rec_r = r(0);           // r(n-1)
+    const built = null + null;    // rec_l + rec_r
+    result = null;                // built
+  };
+  console.assert(result === r(1), 'assert: r(1) !== '+result);
+};
+```
+
+n === 13
+```js
+{ // console.log('trusting 13')
+  let result;
+  const is_base = false;          // n === 1
+  if (is_base) {
+    const turnt = 13;             // n
+    result = 13;                  // turnt
+  } else {
+    const broke = 12;             // n - 1
+    const rec_l = r(12);          // r(n-1)  
+    const rec_r = r(12);          // r(n-1)
+    const built = 2048 + 2048;    // rec_l + rec_r
+    result = 4096;                // built
+  };
+  console.assert(result === r(13), 'assert: r(13) !== '+result);
+};
+```
+
+n === 20
+```js
+{ // console.log('trusting 20')
+  let result;
+  const is_base = false;            // n === 1
+  if (is_base) {
+    const turnt = 20;               // n
+    result = 20;                    // turnt
+  } else {  
+    const broke = 19;               // n - 1
+    const rec_l = r(19);            // r(n-1)
+    const rec_r = r(19);            // r(n-1)
+    const built = 262144 + 262144;  // rec_l + rec_r
+    result = 524283;                // built
+  };
+  console.assert(result === r(20), 'assert: r(20) !== '+result);
+};
+```
+
+
+n === 42
+```js
+{ // console.log('trusting 42')
+  let result;
+  const is_base = false;            // n === 1
+  if (is_base) {
+    const turnt = 42;               // n
+    result = 42;                    // turnt
+  } else {  
+    const broke = 41;               // n - 1
+    const rec_l = r(41);            // r(n-1)
+    const rec_r = r(41);            // r(n-1)
+    const built = 1099511627776 + 1099511627776;  // rec_l + rec_r
+    result = 2199023255552;         // built
+  };
+  console.assert(result === r(42), 'assert: r(42) !== '+result);
+};
+```
+
+
+[TOP](#a-recursion)
+
+---
+
+
 ## Logged Function
 
 
@@ -210,6 +310,7 @@ function run_tests(_target, _cases) {
   };
 };
 ```
+[TOP](#a-recursion)
 
 #### Render Vis
 
@@ -236,6 +337,7 @@ function render_vis(_vis, _expected) {
   };
 };
 ```
+[TOP](#a-recursion)
 
 #### Log Reports
 
@@ -264,6 +366,7 @@ function log_reports(_target, _cases) {
 };
 ```
 
+[TOP](#a-recursion)
 ___
 ___
 ### <a href="http://janke-learning.org" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Janke Learning</a>

@@ -1,9 +1,36 @@
 # Recursion
 
 ### Index
+* [recursion?](#recursion)
 * [how to do this](#how-to-do-this)
 * [recursive starters](#recursive-starters)
 * [helper functions](#helper-functions)
+
+---
+
+## recursion?
+
+it's not as hard as it sounds, and analogies or practical problems don't help. the trick with recursion is to turn off your 'intuition' & 'visualization' and turn on your 
+
+by combining 'meaningless' recursive challenges, javascript's flexible and mathematical notation, with the availability & expressive power of standard browser consoles ... you've got a good thing going.  students can manipulate recursion nearly as they would on paper with the added benefit of self-correcting exercises and practice with code
+
+from formal to function
+
+manual recursion
+* grasp parallelness
+* trust recursive calls
+* understand it in notation
+
+
+analyzing a recursive function (the steps)
+* base check
+* turn around
+* break down
+* recurse
+* build up
+
+trust recursion, think locally.  a major difficulty in learning and applying recursion comes with the jump from small, simple problems with known & visualizable problem spaces to problems with unwieldy problem spaces.  this can be prepared for on simple problems by having them manually complete one call and relying on the recursive function for the res
+
 
 ---
 
@@ -25,7 +52,7 @@
 6. for endless practice
     * come up with random recursive definitions and study them
     * how does the same function behave with different input sets?
-    * 
+    * does it take a lot longer to finish for small changes in arguments
 
 [TOP](#recursion)
 
