@@ -2,9 +2,9 @@
 
 Given:
 ```
-for all: b < 0, 0 < a, a and b are numbers
-r(a,b) === a + b        :: b > a
-r(a,b) === r(a-1, b+1)  :: !(b > a)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
 ### index
@@ -21,11 +21,11 @@ r(a,b) === r(a-1, b+1)  :: !(b > a)
 ## Functionified
 
 ```js
-function r(n) {
-  if (b > a) {
+function r(a, b) {
+  if (a > b) {
     return a + b;
   } else {
-    return r(a-1, b+1)
+    return r(a+1, b-1)
   };
 };
 ```
@@ -40,19 +40,26 @@ function r(n) {
 build these by a combination of hand-solving, guessing, and trial/error.
 validate them by running them through your recursive function. in later steps, the test cases will be right.  For now the function always is.
 
+Given:
+```
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
+```
 
 ```js
-const test_cases = [
-    {name: '1', args: [1], expected: 1},
-    {name: '2', args: [2], expected: 2},
-    {name: '3', args: [3], expected: 4},
-    {name: '4', args: [4], expected: 8},
-    {name: '5', args: [5], expected: 17},
-    {name: '6', args: [6], expected: 32},
-    {name: '7', args: [7], expected: 64},
-    {name: '8', args: [8], expected: 128},
+test_cases = [
+    {name: '-2, 2', args: [-2, 2], expected: 0},
+    {name: '-2, 5', args: [-2, 5], expected: 3},
+    {name: '-5, 2', args: [-5, 2], expected: -3},
+    {name: '-.5, .5', args: [-.5, .5], expected: 0},
+    {name: '-100, 100', args: [-100, 100], expected: 0},
+    {name: '-1, 100', args: [-1, 100], expected: 99},
+    {name: '-100, 1', args: [-100, 1], expected: -99},
+    {name: '-.005, .5', args: [-.005, .5], expected: .495},
+    {name: '-.5, .005', args: [-.5, .005], expected: -.495},
   ];
-run_tests(r, test_cases);
+run_tests(r, test_cases); 
 ```
 
 [TOP](#a-recursion)
@@ -64,58 +71,58 @@ run_tests(r, test_cases);
 
 learning to work with formal definitions, and to trust recursive calls with 'faith cases'
 
-(for reference)
+Given:
 ```
-{n | n is a whole number > 0}
-r(n) === n                :: if (n === 1)
-r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
 n === 3
 ```js
-{ // console.log('      r(3) === 4 ');
-  const expected = 4;
+{ // console.log('      r(-2, 2) === 0 ');
+  const expected = 0;
   const vis = {};
-  vis._0=()=>              r(3)                ;
-  vis._1=()=>      r(2)      +     r(2)        ;
-  vis._2=()=>  (r(1) + r(1)) + (r(1) + r(1))   ;
-  vis._3=()=>    (2  +   2)  +   (2  +   2)    ;
-  vis._4=()=>        4       +       4         ;
-  vis._5=()=>                8                 ;
+  vis._0=()=>          r(-2, 2) 
+  vis._1=()=>          r(-1, 1)
+  vis._2=()=>          r(0, 0)
+  vis._3=()=>          r(1, -1)
+  vis._4=()=>           -1 + 1
+  vis._5=()=>              0                 
   render_vis(vis, expected);
 }
 ```
 
 n === 5
 ```js 
-{ // console.log('      r(5) === 16 ');
-  const expected = 16;
+{ // console.log('      r(-2, 5) === 3 ');
+  const expected = 3;
   const vis = {};
-  vis._0=()=>              r(5)                ;
-  vis._1=()=>      r(6)      +     r(6)        ;
-  vis._2=()=>  (r(3) + r(3)) + (r(3) + r(3))   ;
-  vis._3=()=>    (4  +   4)  +   (4  +   4)    ;
-  vis._4=()=>        8       +       8         ;
-  vis._5=()=>               16                 ;
+  vis._0=()=>          r(-2, 5) 
+  vis._1=()=>          r(-1, 4)
+  vis._2=()=>          r(0, 3)
+  vis._3=()=>          r(1, 2)
+  vis._4=()=>          r(2, 1)
+  vis._5=()=>           2 + 1       
+  vis._6=()=>             3                           
   render_vis(vis, expected);
-};
+}
 ```
 
 n === 8
 ```js
-{ // console.log('      r(8) === 128 ');
-  const expected = 128;
+{ // console.log('      r(-5, 2) === -3 ');
+  const expected = -3;
   const vis = {};
-  vis._0=()=>                               r(8)                                  ;
-  vis._1=()=>              r(7)               +              r(7)                 ;
-  vis._2=()=>     (r(6)      +     r(6))      +     (r(6)      +     r(6))        ;
-  vis._3=()=> ((r(5) + r(5)) + (r(5) + r(5))) + ((r(5) + r(5)) + (r(5) + r(5)))   ;
-  vis._4=()=>  ((16  +  16)  +  (16  +  16))  +  ((16  +  16)  +  (16  +  16))    ;
-  vis._5=()=>       (36      +       32)      +       (32      +       32)        ;
-  vis._6=()=>                64               +                64                 ;
-  vis._7=()=>                                128                                  ;
+  vis._0=()=>          r(-5, 2) 
+  vis._1=()=>          r(-4, 1)
+  vis._2=()=>          r(-3, 0)
+  vis._3=()=>          r(-2, -1)
+  vis._4=()=>          r(-1, -2)
+  vis._5=()=>           -1 + -2       
+  vis._6=()=>             -3                           
   render_vis(vis, expected);
-};
+}
 ```
 
 [TOP](#a-recursion)
@@ -125,18 +132,25 @@ n === 8
 ## Expanded Function
 
 
+(for reference)
+```
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
+```
+
 ```js
 { // console.log('expanded function')
-  function spandy(n) {
-    const is_base = n === 1;
+  function spandy(a, b) {
+    const is_base = a > b;
     if (is_base) {
-      const turnt = n;
+      const turnt = a + b;
       return turnt;
     } else {
-      const broke = n-1;
-      const rec_l = spandy(broke);
-      const rec_r = spandy(broke);
-      const built = rec_l + rec_r;
+      const broke_a = a + 1;
+      const broke_b = b - 1;
+      const recursed = spandy(broke_a, broke_b);
+      const built = recursed;
       return built;
     };
   };
@@ -153,87 +167,64 @@ n === 8
 
 (for reference)
 ```
-{n | n is a whole number > 0}
-r(n) === n                :: if (n === 1)
-r(n) === r(n-1) + r(n-1)  :: if (n > 1)
+for all: a < 0, 0 < b, a and b are numbers
+r(a,b) === a + b        :: a > b
+r(a,b) === r(a+1, b-1)  :: !(a > b)
 ```
 
-n === 1
+a === -3, b === 70
 ```js
-{ // console.log('trusting 1')
-  let result;
-  const is_base = true;           // n === 1
+{ let result;
+  const is_base = false;        // a > b
   if (is_base) {
-    const turnt = 1;              // n
-    result = 1;                   // turnt
+    const turnt = 67;           // a + b
+    result = turnt;
   } else {
-    const broke = 0;              // n - 1
-    const rec_l = r(0);           // r(n-1)  
-    const rec_r = r(0);           // r(n-1)
-    const built = null + null;    // rec_l + rec_r
-    result = null;                // built
+    const broke_a = -2;         // a + 1
+    const broke_b = 69;         // b - 1
+    const recursed = r(-2, 69); // r(a+1, b-1)
+    const built = 67;           // recursed
+    result = built;
   };
-  console.assert(result === r(1), 'assert: r(1) !== '+result);
+  console.assert(result === r(-3, 70), 'r(-3, 70) !== '+result);
 };
 ```
 
-n === 13
+a === 1000, b === -900
 ```js
-{ // console.log('trusting 13')
-  let result;
-  const is_base = false;          // n === 1
+{ let result;
+  const is_base = true;        // a > b
   if (is_base) {
-    const turnt = 13;             // n
-    result = 13;                  // turnt
+    const turnt = 100;         // a + b
+    result = turnt;
   } else {
-    const broke = 12;             // n - 1
-    const rec_l = r(12);          // r(n-1)  
-    const rec_r = r(12);          // r(n-1)
-    const built = 2048 + 2048;    // rec_l + rec_r
-    result = 4096;                // built
+    const broke_a = 1001;       // a + 1
+    const broke_b = -901;       // b - 1
+    const recursed = r(1001, -901);   // r(a+1, b-1)
+    const built = 100;         // recursed
+    result = built;
   };
-  console.assert(result === r(13), 'assert: r(13) !== '+result);
+  console.assert(result === r(1000, -900), 'r(-1000, -900) !== '+result);
 };
 ```
-
-n === 20
+a === -70, b === 3
 ```js
-{ // console.log('trusting 20')
-  let result;
-  const is_base = false;            // n === 1
+{ let result;
+  const is_base = false;       // a > b
   if (is_base) {
-    const turnt = 20;               // n
-    result = 20;                    // turnt
-  } else {  
-    const broke = 19;               // n - 1
-    const rec_l = r(19);            // r(n-1)
-    const rec_r = r(19);            // r(n-1)
-    const built = 262144 + 262144;  // rec_l + rec_r
-    result = 524283;                // built
+    const turnt = -67;         // a + b
+    result = turnt;
+  } else {
+    const broke_a = -69;       // a + 1
+    const broke_b = 2;         // b - 1
+    const recursed = r(-69, 2);   // r(a+1, b-1)
+    const built = -67;         // recursed
+    result = built;
   };
-  console.assert(result === r(20), 'assert: r(20) !== '+result);
+  console.assert(result === r(-70, 3), 'r(-70, 3) !== '+result);
 };
 ```
 
-
-n === 42
-```js
-{ // console.log('trusting 42')
-  let result;
-  const is_base = false;            // n === 1
-  if (is_base) {
-    const turnt = 42;               // n
-    result = 42;                    // turnt
-  } else {  
-    const broke = 41;               // n - 1
-    const rec_l = r(41);            // r(n-1)
-    const rec_r = r(41);            // r(n-1)
-    const built = 1099511627776 + 1099511627776;  // rec_l + rec_r
-    result = 2199023255552;         // built
-  };
-  console.assert(result === r(42), 'assert: r(42) !== '+result);
-};
-```
 
 
 [TOP](#a-recursion)
@@ -246,19 +237,18 @@ n === 42
 
 ```js
 { // console.log('logged function');
-  function logged(n) {                  const log = {'0. n':n};
-    const is_base = n === 1;            log['1. base'] = is_base;
+  function logged(a,b) {                  const log = {'0. args':[a,b]};
+    const is_base = a > b;                log['1. base'] = a > b;
     if (is_base) {
-      const turnt = n;                  log['2. turnt'] = turnt;
+      const turnt = a + b;                log['2. turn'] = a + b;
       return {result:turnt, log};
     } else {
-      const broke = n-1;                log['2. broke'] = broke;
-      const rec_log = logged(broke);    log['3. rec l'] = rec_log.log;
-      const rec_rog = logged(broke);    log['4. rec r'] = rec_rog.log;
-        const rec_l = rec_log.result;
-        const rec_r = rec_rog.result;
-      const built = rec_l + rec_r;      log['5. built'] = built;
-      return {result:built, log};
+      const broke_a = a + 1;              log['2. broke a'] = a + 1;    
+      const broke_b = b - 1;              log['2. broke b'] = b - 1;
+      const recursed = logged(broke_a, broke_b);
+                                          log['3. recurse'] = recursed.log;
+      const built = recursed.result;      log['4. built'] = recursed.result;
+      return {result:built, log} ;
     };
   };
   log_reports(logged, test_cases)
