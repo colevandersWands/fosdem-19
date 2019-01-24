@@ -41,7 +41,8 @@ the code:
 
   const actual = temp;              log.push({actual});
   
-  console.assert(actual === expected, log);
+  console.assert(actual === expected, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -76,7 +77,8 @@ the code:
 
   const actual = a;               log.push({actual});
   
-  console.assert(actual === expected, log);
+  console.assert(actual === expected, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -111,7 +113,8 @@ the code:
 
   const actual = a;               log.push({actual});
   
-  console.assert(actual === expected, log);
+  console.assert(actual === expected, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -151,7 +154,8 @@ the code:
   
   const assert_act = JSON.stringify(actual);
   const assert_exp = JSON.stringify(expected);
-  console.assert(assert_act === assert_exp, log);
+  console.assert(assert_act === assert_exp, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -188,7 +192,8 @@ the code:
   
   const assert_act = JSON.stringify(actual);
   const assert_exp = JSON.stringify(expected);
-  console.assert(assert_act === assert_exp, log);
+  console.assert(assert_act === assert_exp, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -224,7 +229,8 @@ the code:
   
   const assert_act = JSON.stringify(actual);
   const assert_exp = JSON.stringify(expected);
-  console.assert(assert_act === assert_exp, log);
+  console.assert(assert_act === assert_exp, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -265,7 +271,8 @@ the code:
   
   const assert_act = JSON.stringify(actual);
   const assert_exp = JSON.stringify(expected);
-  console.assert(assert_act === assert_exp, log);
+  console.assert(assert_act === assert_exp, 'try again');
+  console.log(log);
 }
 ```
 the values:
@@ -294,7 +301,8 @@ your notes:
 
   const actual = acumul;                  log.push({actual})
   
-  console.assert(actual === expected, log);
+  console.assert(actual === expected, 'try again');
+  console.log(log);
 }
 ```
 ```
