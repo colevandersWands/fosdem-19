@@ -1,4 +1,4 @@
-console.groupCollapsed(' compositions of the previous functions');
+console.groupCollapsed(' some compositions');
 
 
 // strings

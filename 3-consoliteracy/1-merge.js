@@ -31,6 +31,7 @@ run_tests(merge, merge_tests, false);
 
 //  built this to debug while developing
 //  it looks like more work, but makes debugging a breeze once you're used to it
+//  try uncommenting this and using the logs to find my mistake
 // function merge(arr1, arr2, _log) {               var log = {0:{1: arr1.slice(), 2:arr2.slice()}};
 //   var base_1 = arr1.length === 0;               
 //   var base_2 = arr2.length === 0;                log[1] = {b1: base_1, b2: base_2};
@@ -41,7 +42,7 @@ run_tests(merge, merge_tests, false);
 //     var turn_2 = arr1.concat(arr2);              log[2] = {turn: turn_2};
 //     if (!_log) { return turn_2;  }        else  { return {result:turn_2, log:log}; }
 //   } else {
-//     if (arr1[0] < arr2[0]) {                     log[3] = 'arr1';
+//     if (arr1[0] < arr2[1]) {                     log[3] = 'arr1';
 //       var item = arr1.shift();                   log[4] = item;
 //       var broke = arr1;                          log[5] = broke.slice();
 //       var recursed = merge(arr1,arr2,_log);      log[6] = recursed.log;

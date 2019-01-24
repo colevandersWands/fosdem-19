@@ -8,6 +8,8 @@ zeroing in on threshold concepts in cs1
 
 role of programming in cs 1 class
   - consoliteracy
+    link to rhetorics of code
+    and 4 points
   students should be able to take notes in code
   interact with live programs
   easily share work and build a portfolio
