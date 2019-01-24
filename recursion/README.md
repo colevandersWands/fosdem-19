@@ -1,3 +1,10 @@
+example notes
+* use always 'given' - practice working from formal def
+* note them to always replace the internal recursive call's name
+* logging has 2 'n' entries if it happens twice (recursing or breaking)
+* change 'break-down' to 'advancing' or something of the sort
+* get rid of extraneous console logs
+
 # Recursion
 
 ### Index

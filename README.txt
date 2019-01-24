@@ -6,7 +6,14 @@ zeroing in on threshold concepts in cs1
   process over product
 
 
-
+role of programming in cs 1 class
+  - consoliteracy
+  students should be able to take notes in code
+  interact with live programs
+  easily share work and build a portfolio
+  know to structure code and work with machine
+  * learn relationship of code to real-world contexts
+    cs isn't programming, it's understanding and applying computation
 
 
 main points
