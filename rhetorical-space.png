@@ -1,0 +1,33 @@
+the questions
+  - introduced gradually over time as course progresses
+    effectively discussing a-d for a given use-case is the objective of this course
+
+  A. static source code - consider this the primary document
+    1. does source convey why it was written? (see C.1)
+    2. does source communicate intentions/strategy to devs?
+    3. does source communicate implementation to devs?
+    4. are 1-3 in alignment? 
+    (this needs help)
+
+  B. running runtime
+    1. does source code validly instruct the machine?
+      a. does the runtime helpfully confirm validity?
+    2. does source code correctly instruct the machine?
+      a. does the runtime helpfully explain intended behavior?
+      b. does the runtime helpfully explain actual behavior (correctness)?
+    3. can dev interact meaningfully with running code? 
+      a. what does this mean in each case?
+
+  C. user-facing application
+    1. what does this code address in a human's life?
+    2. what is it's desired human/real-world effect/interactions? 
+    3. what is it's actual human-facing presence/effect?
+
+  D. global implications
+    1. what are the larger ramifications of this code's existence?
+    2. are they what you intended?
+    3. can you control them?
+    4. is this good?
+    
+    
+by these measures simple & clear code is preferred over impressive code.  course material will be created and graded accordingly
