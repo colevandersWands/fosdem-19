@@ -1,7 +1,4 @@
-since evelyn
-  presentation focuses directly around the demo project
-  readme is a friendly intro that aligns with the presentation
-  write another .md goes in depth
+
 
 thesis questions
   1. what should be the goals of introductory computing education
